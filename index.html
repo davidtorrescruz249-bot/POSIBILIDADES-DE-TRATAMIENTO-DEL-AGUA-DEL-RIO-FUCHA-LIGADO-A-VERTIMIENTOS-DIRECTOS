@@ -1,207 +1,328 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tratamiento del Agua del Río Fucha</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Posibilidades de Tratamiento - Río Fucha</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
   <style>
-    /* Estilos generales */
-    body {
-      font-family: 'Segoe UI', Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background: linear-gradient(135deg, #f3e5f5, #fce4ec);
-      color: #333;
+    :root{
+      --bg1: #f7eefe; /* light pink */
+      --bg2: #efe7ff; /* very light purple */
+      --accent1: #8a2be2; /* purple */
+      --accent2: #ff69b4; /* hot pink */
+      --card: #ffffff;
+      --muted: #6b6b78;
+      --radius: 14px;
+      --shadow: 0 8px 30px rgba(126, 76, 255, 0.12);
+      --glass: rgba(255,255,255,0.6);
     }
 
-    /* Menú de navegación */
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background: linear-gradient(90deg, #6a1b9a, #ad1457);
-      padding: 12px 0;
-      z-index: 1000;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(180deg, var(--bg2) 0%, var(--bg1) 100%);
+      color:#222;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.5;
+      padding:28px;
     }
 
-    nav ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      justify-content: center;
-      gap: 30px;
+    /* layout */
+    .container{
+      max-width:1100px;
+      margin:0 auto;
+      padding:28px;
     }
 
-    nav ul li {
-      display: inline;
+    header{
+      display:flex;
+      gap:18px;
+      align-items:center;
+      justify-content:space-between;
+      margin-bottom:22px;
     }
 
-    nav ul li a {
+    .brand{
+      display:flex;
+      gap:16px;
+      align-items:center;
+    }
+
+    .logo{
+      width:62px;
+      height:62px;
+      border-radius:14px;
+      background: linear-gradient(135deg, var(--accent1), var(--accent2));
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:white;
+      font-weight:700;
+      box-shadow: var(--shadow);
+    }
+
+    .titleSmall{
+      font-size:14px;
+      color:var(--muted);
+      margin:0;
+    }
+
+    h1{
+      font-size:22px;
+      margin:0;
+      color: #2b0a4d;
+    }
+
+    nav a{
+      text-decoration:none;
       color: #fff;
-      text-decoration: none;
-      font-weight: bold;
-      transition: color 0.3s;
+      background: linear-gradient(90deg, rgba(138,43,226,0.95), rgba(255,105,180,0.95));
+      padding:10px 14px;
+      border-radius:10px;
+      font-weight:600;
+      box-shadow: 0 6px 18px rgba(138,43,226,0.15);
     }
 
-    nav ul li a:hover {
-      color: #ffe0f0;
+    main{
+      display:grid;
+      grid-template-columns: 1fr 360px;
+      gap:22px;
+      align-items:start;
     }
 
-    /* Encabezado */
-    header {
-      background: linear-gradient(90deg, #6a1b9a, #ad1457);
-      color: #fff;
-      text-align: center;
-      padding: 70px 20px 40px;
-      margin-top: 45px; /* para que no se esconda debajo del menú */
-      box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+    /* left column - content */
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.85));
+      border-radius: var(--radius);
+      padding:22px;
+      box-shadow: var(--shadow);
+      overflow:hidden;
     }
 
-    header h1 {
-      margin: 0;
-      font-size: 2.2em;
+    .hero{
+      display:flex;
+      gap:18px;
+      align-items:flex-start;
+      margin-bottom:16px;
     }
 
-    .container {
-      max-width: 1000px;
-      margin: 30px auto;
-      padding: 0 20px;
+    .hero .badge{
+      background: linear-gradient(90deg, rgba(138,43,226,0.12), rgba(255,105,180,0.08));
+      border-radius:10px;
+      padding:8px 12px;
+      color: var(--accent1);
+      font-weight:600;
+      border:1px solid rgba(138,43,226,0.06);
     }
 
-    section {
-      background: #fff;
-      padding: 25px;
-      border-radius: 15px;
-      margin-bottom: 30px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      transition: transform 0.2s ease;
-      scroll-margin-top: 100px; /* para que al hacer clic en el menú no tape el título */
+    .hero p.lead{
+      margin:0;
+      color:#3b1748;
+      font-weight:500;
     }
 
-    section:hover {
-      transform: scale(1.01);
+    section{
+      margin-top:14px;
     }
 
-    h2 {
-      color: #6a1b9a;
-      margin-bottom: 15px;
-      border-left: 6px solid #ad1457;
-      padding-left: 10px;
+    section h2{
+      font-size:18px;
+      margin:0 0 10px 0;
+      color: var(--accent1);
     }
 
-    p {
-      text-align: justify;
+    p{margin:0 0 12px 0; color:#333}
+
+    ul.keywords{display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:10px; padding-left:0; list-style:none}
+    ul.keywords li{
+      background: linear-gradient(180deg, rgba(138,43,226,0.04), rgba(255,105,180,0.03));
+      padding:10px;
+      border-radius:10px;
+      border:1px solid rgba(138,43,226,0.06);
+      color:#4a2a4a;
+      font-size:14px;
     }
 
-    ul {
-      margin: 15px 0 0 25px;
+    /* right column - aside */
+    aside .card{
+      position:sticky;
+      top:28px;
+    }
+    .meta{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      margin-bottom:12px;
+    }
+    .meta .dot{
+      width:18px;height:18px;border-radius:50%;
+      background: linear-gradient(90deg,var(--accent1),var(--accent2));
+      box-shadow:0 6px 14px rgba(138,43,226,0.15);
+    }
+    .source-list{font-size:14px; color:var(--muted); margin-top:8px}
+    .source-list a{color:var(--accent1); text-decoration:none}
+    .cta{
+      display:block;
+      margin-top:14px;
+      text-decoration:none;
+      padding:12px;
+      border-radius:12px;
+      text-align:center;
+      font-weight:700;
+      background: linear-gradient(90deg, var(--accent1), var(--accent2));
+      color:white;
+      box-shadow:0 8px 28px rgba(255,105,180,0.12);
     }
 
-    li {
-      margin-bottom: 12px;
+    footer{
+      margin-top:22px;
+      text-align:center;
+      color:var(--muted);
+      font-size:13px;
     }
 
-    b {
-      color: #ad1457;
-    }
-
-    footer {
-      text-align: center;
-      padding: 15px;
-      background: #6a1b9a;
-      color: #fff;
-      margin-top: 40px;
-      font-size: 0.9em;
-      border-top: 4px solid #ad1457;
+    /* responsive */
+    @media (max-width:980px){
+      main{grid-template-columns:1fr}
+      aside .card{position:relative; top:auto}
     }
   </style>
 </head>
+
 <body>
-
-  <!-- Menú de navegación -->
-  <nav>
-    <ul>
-      <li><a href="#introduccion">Introducción</a></li>
-      <li><a href="#palabras-clave">Palabras Clave</a></li>
-      <li><a href="#marco-teorico">Marco Teórico</a></li>
-      <li><a href="#conclusion">Conclusión</a></li>
-    </ul>
-  </nav>
-
-  <!-- Encabezado -->
-  <header>
-    <h1>Posibilidades de Tratamiento del Agua del Río Fucha</h1>
-    <p>Ligado a Vertimientos Directos</p>
-  </header>
-
-  <!-- Contenido -->
   <div class="container">
-    
-    <section id="introduccion">
-      <h2>Introducción</h2>
-      <p>
-        La contaminación de los ríos urbanos es una de las problemáticas ambientales evidentes y persistentes en las ciudades latinoamericanas. 
-        En Bogotá, el río Fucha representa un ejemplo claro de cómo los desechos que producimos diariamente no desaparecen al ser arrojados, 
-        sino que se transforman en agentes de deterioro para los ecosistemas y la salud humana.
-      </p>
-      <p>
-        La frase <b>"lo que tiramos no desaparece"</b> refleja un principio fundamental de la ciencia: la materia no se destruye, solo cambia de forma. 
-        Cada bolsa plástica, envase o vertimiento termina en cuerpos de agua como el río Fucha, impactando la biodiversidad, el paisaje y las comunidades.
-      </p>
-      <p>
-        El agua del río puede tratarse mediante diferentes métodos: físicos, químicos, biológicos y sostenibles, con el objetivo de hacerlo más limpio y saludable 
-        para los seres vivos y las comunidades humanas que dependen de él.
-      </p>
-    </section>
+    <header>
+      <div class="brand">
+        <div class="logo">F</div>
+        <div>
+          <p class="titleSmall">Informe ambiental</p>
+          <h1>Posibilidades de Tratamiento del Agua del Río Fucha</h1>
+        </div>
+      </div>
 
-    <section id="palabras-clave">
-      <h2>Palabras Clave</h2>
-      <ul>
-        <li><b>Vertimientos directos:</b> descarga de aguas residuales sin tratamiento previo en cuerpos de agua.</li>
-        <li><b>Contaminación hídrica:</b> alteración del agua por sustancias nocivas como químicos, plásticos y microorganismos.</li>
-        <li><b>Tratamiento de aguas residuales:</b> procesos físicos, químicos y biológicos que eliminan contaminantes.</li>
-        <li><b>Impacto ambiental:</b> consecuencias negativas de los vertimientos en los ecosistemas y la sociedad.</li>
-        <li><b>Gestión sostenible:</b> prácticas que garantizan el uso responsable del agua para el presente y el futuro.</li>
-      </ul>
-    </section>
+      <nav>
+        <a href="#introduccion">Ver resumen</a>
+      </nav>
+    </header>
 
-    <section id="marco-teorico">
-      <h2>Marco Teórico</h2>
-      <p>
-        El manejo inadecuado de los residuos sólidos y líquidos constituye una de las principales problemáticas ambientales urbanas. 
-        Bajo la premisa de que <b>“nada desaparece”</b>, los desechos generados terminan afectando los ecosistemas.
-      </p>
-      <p>
-        Cada envoltura, botella o residuo arrojado en Bogotá llega finalmente a sistemas hídricos como el río Fucha. 
-        Este afluente, que atraviesa gran parte de la ciudad, recibe aguas residuales domésticas e industriales, además de basuras.
-      </p>
-      <p>
-        Estudios de la CAR y la Secretaría Distrital de Ambiente muestran que el río presenta altos niveles de DBO, coliformes fecales y microplásticos, 
-        indicadores de una grave afectación en su calidad y biodiversidad.
-      </p>
-    </section>
+    <main>
+      <!-- left: contenido principal -->
+      <div>
+        <article class="card" id="introduccion">
+          <div class="hero">
+            <div class="badge">Vertimientos Directos</div>
+            <div style="flex:1">
+              <p class="lead"><strong>Introducción</strong> — La contaminación de los ríos urbanos es una problemática persistente en las ciudades latinoamericanas. El río Fucha es un ejemplo de cómo residuos diarios —bolsas, vertimientos y aguas residuales— terminan degradando ecosistemas y salud humana.</p>
+            </div>
+          </div>
 
-    <section id="conclusion">
-      <h2>Conclusión</h2>
-      <p>
-        El río Fucha es un claro ejemplo de cómo nuestras acciones diarias afectan directamente el medio ambiente. 
-        Todo lo que desechamos termina contaminando el agua, dañando a los animales y afectando a las comunidades cercanas.
-      </p>
-      <p>
-        No es solo un problema del gobierno o de las empresas, también es nuestra responsabilidad. 
-        Como jóvenes podemos contribuir cambiando hábitos: separar basuras, consumir responsablemente y no arrojar residuos al ambiente.
-      </p>
-    </section>
+          <section>
+            <h2>Introducción (ampliada)</h2>
+            <p>La frase <em>"lo que tiramos no desaparece"</em> refleja el principio de que la materia solo se transforma. Cada bolsa plástica, envase o vertimiento arrojado en el entorno urbano termina en cuerpos de agua como el río Fucha, afectando la biodiversidad, el paisaje y las comunidades aledañas.</p>
 
+            <p>Las descargas directas provienen de actividades domésticas, industriales y comerciales que agregan cargas orgánicas, químicas y biológicas más allá de la capacidad natural del río para auto-depurarse. Por eso es urgente aplicar estrategias de tratamiento y prevención.</p>
+          </section>
+
+          <section>
+            <h2>Palabras clave</h2>
+            <ul class="keywords">
+              <li><strong>Vertimientos directos:</strong> Descarga sin tratamiento previa.</li>
+              <li><strong>Contaminación hídrica:</strong> Sustancias que alteran la calidad del agua.</li>
+              <li><strong>Tratamiento de aguas:</strong> Procesos físicos, químicos y biológicos.</li>
+              <li><strong>Impacto ambiental:</strong> Consecuencias en ecosistemas y comunidades.</li>
+              <li><strong>Gestión sostenible:</strong> Prácticas para uso responsable del agua.</li>
+              <li><strong>Calidad del agua:</strong> Indicadores: DBO, coliformes, microplásticos.</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>Marco teórico</h2>
+            <p>El manejo inadecuado de residuos sólidos y líquidos es una de las principales problemáticas urbanas. Bajo la premisa de que "nada desaparece", los residuos siguen un recorrido que termina afectando los ecosistemas. Este principio se relaciona con la primera ley de la termodinámica: la materia no se crea ni se destruye, solo se transforma.</p>
+
+            <p>El río Fucha nace en los cerros orientales y atraviesa buena parte de la ciudad. Recibe altas cargas contaminantes por vertimientos domésticos e industriales y por disposición inadecuada de basuras. Estudios de la CAR y la Secretaría Distrital de Ambiente muestran niveles altos de DBO, coliformes fecales y microplásticos.</p>
+          </section>
+
+          <section>
+            <h2>¿Cuáles son las principales fuentes de contaminación?</h2>
+            <p>Las actividades humanas afectan la calidad del agua mediante:</p>
+            <ul>
+              <li><strong>Contaminación puntual:</strong> Emisiones directas de fábricas o estaciones depuradoras.</li>
+              <li><strong>Contaminación difusa:</strong> Nutrientes y plaguicidas agrícolas, emisiones atmosféricas que regresan al suelo y aguas.</li>
+            </ul>
+
+            <p><strong>Vertimientos directos:</strong> Ejemplo: tubería que descarga aguas residuales al río.<br>
+            <strong>Vertimientos indirectos:</strong> Descargas a alcantarillado o colectores que terminan en cuerpos de agua o en el subsuelo por filtración.</p>
+          </section>
+
+          <section>
+            <h2>Clasificación y ejemplos</h2>
+            <p><strong>Vertimientos Directos</strong></p>
+            <p>Descripción: Emisión directa de contaminantes a aguas continentales, suelo o aguas subterráneas. Ejemplo: una tubería que descarga aguas residuales en un río.</p>
+
+            <p><strong>Vertimientos Indirectos</strong></p>
+            <p>Descripción: Descargas a través de medios de transporte (alcantarillado, colectores) que luego desembocan en cuerpos de agua o filtran al subsuelo. Ejemplo: vertido en un sistema público de alcantarillado que eventualmente llega a un afluente.</p>
+          </section>
+
+          <section>
+            <h2>Conclusión</h2>
+            <p>El río Fucha es un claro ejemplo de cómo nuestras acciones diarias impactan el medio ambiente. La frase "lo que tiramos no desaparece" es real: lo que se bota por el inodoro, lavadero o en la calle termina en el río, contaminándolo y afectando a fauna y comunidades.</p>
+
+            <p>Esta responsabilidad no recae solo en el gobierno o en empresas; también nos corresponde a nosotros. Como jóvenes podemos cambiar hábitos: consumir con consciencia, separar residuos y evitar arrojar basura a las calles o desagües.</p>
+          </section>
+        </article>
+
+        <!-- opcional: sección de soluciones/posibilidades de tratamiento -->
+        <article class="card" style="margin-top:18px;">
+          <h2>Posibilidades de tratamiento (resumen práctico)</h2>
+          <ul>
+            <li><strong>Tratamiento primario:</strong> Sedimentación y separación de sólidos gruesos para reducir carga inicial.</li>
+            <li><strong>Tratamiento secundario:</strong> Procesos biológicos (lodos activados, biodigestores) para degradar materia orgánica.</li>
+            <li><strong>Tratamiento terciario:</strong> Filtración avanzada, adsorción de contaminantes, eliminación de nutrientes y desinfección.</li>
+            <li><strong>Soluciones verdes:</strong> Humedales construidos, fitorremediación y barreras vegetales para retener y degradar contaminantes.</li>
+            <li><strong>Gestión y prevención:</strong> Control de vertimientos, regulación, educación comunitaria y monitoreo continuo.</li>
+          </ul>
+        </article>
+      </div>
+
+      <!-- right: aside con fuentes y llamado a la acción -->
+      <aside>
+        <div class="card">
+          <div class="meta">
+            <div class="dot" aria-hidden="true"></div>
+            <div>
+              <div style="font-weight:700; color:#3a1450;">Fuentes y recursos</div>
+              <div style="font-size:13px; color:var(--muted)">Referencias consultadas</div>
+            </div>
+          </div>
+
+          <div class="source-list">
+            <p>Secretaría Distrital de Ambiente — Red de calidad hídrica de Bogotá. <br>
+            <a href="https://share.google/6ypSj7zSe3UAbIvMS" target="_blank" rel="noopener">Acceso</a></p>
+
+            <p>CAR — Río Bogotá. <br>
+            <a href="https://share.google/WlzPQKpiEgKIqRIEp" target="_blank" rel="noopener">Acceso</a></p>
+
+            <p>Repositorio Institucional Séneca — Calidad hídrica del río Fucha. <br>
+            <a href="https://share.google/QWfcBRNR2WP9iEznV" target="_blank" rel="noopener">Acceso</a></p>
+
+            <p style="margin-top:8px; font-size:13px; color:var(--muted)">Nota: enlaces compartidos por el autor. Revisar publicaciones oficiales para datos técnicos y actualizados.</p>
+          </div>
+
+          <a class="cta" href="#introduccion">Descargar resumen</a>
+        </div>
+      </aside>
+    </main>
+
+    <footer>
+      Documento informativo · Río Fucha · Propuesta visual en tonos morado/rosado
+    </footer>
   </div>
-
-  <!-- Pie de página -->
-  <footer>
-    Proyecto académico – 2025
-  </footer>
-
 </body>
 </html>
